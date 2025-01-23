@@ -17,3 +17,11 @@ func (s *Slice[T]) Filter(predicate func(T) bool) {
 	}
 	s.slice = result
 }
+
+func (s *Slice[T]) Map(f func(T) T) {
+	var result []T
+	for _, item := range s.slice {
+		result = append(result, f(item))
+	}
+	s.slice = result
+}
