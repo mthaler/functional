@@ -7,9 +7,9 @@ import (
 )
 
 func TestFiler(t *testing.T) {
-	n := []int{1, 2, 3, 4, 5, 6}
-	n.Filter(func(i int) bool {
+	s := New[int]([]int{1, 2, 3, 4, 5, 6})
+	s.Filter(func(i int) bool {
 		return i%2 == 0
 	})
-	assert.Equal(t, []int{2, 4, 6}, n)
+	assert.Equal(t, []int{2, 4, 6}, s.slice)
 }
