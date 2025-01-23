@@ -1,11 +1,19 @@
 package slice
 
-func Filter[S ~[]T, T any](items S, predicate func(item T) bool) S {
-	result := make(S, 0)
-	for _, item := range items {
+type Slice[T any] struct {
+	Slice []T
+}
+
+func New[T any](slice []T) Slice[T] {
+	return Slice[T]{Slice: slice}
+}
+
+func (s Slice[T]) Filter(predicate func(T) bool) Slice[T] {
+	var result []T
+	for _, item := range s.Slice {
 		if predicate(item) {
 			result = append(result, item)
 		}
 	}
-	return result
+	return Slice[T]{Slice: result}
 }
