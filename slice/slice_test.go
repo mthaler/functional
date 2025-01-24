@@ -16,8 +16,8 @@ func TestFiler(t *testing.T) {
 
 func TestMap(t *testing.T) {
 	s := New[int]([]int{1, 2, 3, 4, 5, 6})
-	s.Map(func(i int) int {
+	s2 := s.Map(func(i int) int {
 		return i * i
 	})
-	assert.Equal(t, []int{1, 4, 9, 16, 25, 36}, s.slice)
+	assert.Equal(t, []int{1, 4, 9, 16, 25, 36}, s2.slice)
 }
