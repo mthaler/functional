@@ -18,10 +18,10 @@ func (s *Slice[T]) Filter(predicate func(T) bool) Slice[T] {
 	return New[T](result)
 }
 
-func (s *Slice[T]) Map(f func(T) T) {
+func (s *Slice[T]) Map(f func(item T) T) Slice[T] {
 	var result []T
 	for _, item := range s.slice {
 		result = append(result, f(item))
 	}
-	s.slice = result
+	return New[T](result)
 }
