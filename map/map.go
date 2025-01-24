@@ -8,7 +8,7 @@ func New[K comparable, V any](m map[K]V) MyMap[K, V] {
 	return MyMap[K, V]{mymap: m}
 }
 
-func (m *MyMap[K, V]) Filter(predicate func(K, V) bool) MyMap[K, V] {
+func (m *MyMap[K, V]) Filter(predicate func(key K, value V) bool) MyMap[K, V] {
 	result := make(map[K]V)
 	for key, value := range m.mymap {
 		if predicate(key, value) {
