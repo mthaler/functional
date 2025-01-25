@@ -4,6 +4,13 @@ import "container/list"
 
 type MyList list.List
 
+func New(elements ...any) MyList {
+	l := list.New()
+	for e := range elements {
+		l.PushBack(e)
+	}
+	return *l
+}
 func (l *MyList) Filter(predicate func(any) bool) MyList {
 	result := list.New()
 	e := l.Front()
@@ -13,5 +20,5 @@ func (l *MyList) Filter(predicate func(any) bool) MyList {
 		}
 		e = e.Next()
 	}
-	return New[T](result)
+	return MyList(list.New(result))
 }
