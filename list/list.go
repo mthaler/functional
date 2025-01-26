@@ -20,5 +20,5 @@ func (l *MyList) Filter(predicate func(any) bool) MyList {
 		}
 		e = e.Next()
 	}
-	return MyList(list.New(result))
+	return MyList(*result)
 }
