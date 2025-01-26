@@ -9,11 +9,12 @@ func New(elements ...any) MyList {
 	for e := range elements {
 		l.PushBack(e)
 	}
-	return *l
+	return MyList(*l)
 }
 func (l *MyList) Filter(predicate func(any) bool) MyList {
 	result := list.New()
-	e := list.List(l).Front()
+	li := list.List(*l)
+	e := li.Front()
 	for e.Next() != nil {
 		if predicate(e.Value) {
 			result.PushFront(e)
