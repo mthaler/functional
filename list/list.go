@@ -13,7 +13,7 @@ func New(elements ...any) MyList {
 }
 func (l *MyList) Filter(predicate func(any) bool) MyList {
 	result := list.New()
-	e := l.Front()
+	e := list.List(l).Front()
 	for e.Next() != nil {
 		if predicate(e.Value) {
 			result.PushFront(e)
