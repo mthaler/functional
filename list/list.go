@@ -16,12 +16,11 @@ func New(elements ...any) MyList {
 func (l *MyList) Filter(predicate func(any) bool) MyList {
 	result := list.New()
 	li := list.List(*l)
-	e := li.Front()
-	for e.Next() != nil {
-		if predicate(e.Value) {
-			result.PushFront(e)
+	for e := li.Front(); e != nil; e = e.Next() {
+		v := e.Value
+		if predicate(v) {
+			result.PushFront(v)
 		}
-		e = e.Next()
 	}
 	return MyList(*result)
 }
