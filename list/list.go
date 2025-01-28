@@ -19,7 +19,7 @@ func (l *MyList) Filter(predicate func(any) bool) MyList {
 	for e := li.Front(); e != nil; e = e.Next() {
 		v := e.Value
 		if predicate(v) {
-			result.PushFront(v)
+			result.PushBack(v)
 		}
 	}
 	return MyList(*result)
