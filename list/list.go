@@ -23,3 +23,14 @@ func (l *MyList) Filter(predicate func(any) bool) MyList {
 	}
 	return MyList(*result)
 }
+
+func (l *MyList) ToSlice() []any {
+	var result []any
+	li := list.List(*l)
+	e := li.Front()
+	for e.Next() != nil {
+		result = append(result, e.Value)
+		e = e.Next()
+	}
+	return result
+}
