@@ -12,6 +12,6 @@ func TestFilter(t *testing.T) {
 		i := item.(int)
 		return i%2 == 0
 	})
-	exptected := New(6, 4, 2)
+	exptected := New(2, 4, 6)
 	assert.Equal(t, exptected, l2)
 }
