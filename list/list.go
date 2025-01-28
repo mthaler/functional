@@ -24,3 +24,14 @@ func (l *MyList) Filter(predicate func(any) bool) MyList {
 	}
 	return MyList(*result)
 }
+
+func (l *MyList) Map(f func(item any) any) MyList {
+	result := list.New()
+	li := list.List(*l)
+	for e := li.Front(); e != nil; e = e.Next() {
+		v := f(e.Value)
+		result.PushBack(v)
+
+	}
+	return MyList(*result)
+}
